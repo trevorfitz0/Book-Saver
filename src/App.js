@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Header from './Header'
+import Popular from './Popular'
+import Filter from './Filter'
+import AllBooks from './AllBooks'
 import './App.css';
 
 class App extends Component {
@@ -14,6 +17,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <Popular />
+        <Filter />
+        <AllBooks />
       </div>
     )
   }
