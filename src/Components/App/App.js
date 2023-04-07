@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Header from './Header'
-import Popular from './Popular'
-import Filter from './Filter'
-import AllBooks from './AllBooks'
+import Header from '../Header/Header'
+import Popular from '../Popular/Popular'
+import Filter from '../Filter/Filter'
+import AllBooks from '../AllBooks/AllBooks'
 import './App.css';
 
 class App extends Component {
