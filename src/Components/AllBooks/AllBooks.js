@@ -1,9 +1,18 @@
 import React from 'react';
 import './AllBooks.css'
+import Book from '../Book/Book';
 
-const AllBooks = () => {
+const AllBooks = ({ books }) => {
+
+    const bookData = books.map(book => {
+        return <Book title={book.title} author={book.author} rating={book.rank} image={book.book_image}/>
+    })
+
     return (
-        <div className="books-section">This is the books section</div>
+        <div className="books-section">
+            { bookData }
+        </div>
+        
     )
 }
 
