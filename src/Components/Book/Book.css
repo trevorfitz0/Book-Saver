@@ -1,0 +1,19 @@
+.book-card > p {
+    width: 14vw;
+}
+
+.book-card > img {
+    object-fit: cover;
+    height: 40vh;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.book-title {
+    font-size: 1.5rem;
+}

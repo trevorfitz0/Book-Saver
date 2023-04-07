@@ -1,8 +1,14 @@
 import React from 'react'
+import './Book.css'
 
-function Book() {
+function Book({ title, author, rating, image}) {
   return (
-    <div>Book</div>
+    <div className='book-card'>
+        <img src={ image } alt={ title }></img>
+        <p className='book-title'>{ title }</p>
+        <p>{ author }</p>
+        <p>#{ rating}</p>
+    </div>
   )
 }
 
