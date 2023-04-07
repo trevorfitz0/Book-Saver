@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    justify-content:space-between;
+    height: 10%;
+    width: 100%;
+    background-color: black;
+    color:antiquewhite;
+}
+
+.login-section {
+    display: flex;
+}
