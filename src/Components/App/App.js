@@ -11,6 +11,7 @@ class App extends Component {
     super();
     this.state = {
       lists: [],
+      currentBooks: [],
       loading: true
     }
     
@@ -23,6 +24,12 @@ class App extends Component {
         console.log(data.results.lists)
       })
   }
+  selectFilter = (name) => {
+     const filterBooks = this.state.lists.find(list => {
+     return list.list_name === name
+     })
+     this.setState({currentBooks: filterBooks.books})
+  } 
 
   render(){
     if (this.state.loading) {
@@ -32,8 +39,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <Popular />
-        <Filter />
-        <AllBooks books={this.state.lists[0].books}/>
+        <Filter lists={this.state.lists} selectFilter={this.selectFilter}/>
+        <AllBooks books={this.state.currentBooks}/>
       </div>
     )
   }

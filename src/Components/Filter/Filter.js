@@ -1,9 +1,15 @@
 import React from 'react';
 import './Filter.css'
 
-const Filter = () => {
+const Filter = ({lists, selectFilter}) => {
+
+const filterList = lists.map(list => {
+return (
+    <button className="filter-item" name={list.list_name} onClick={(event) => selectFilter(event.target.name)}>{list.list_name}</button>
+)
+})
     return (
-        <div className="filter-section">This is the filter section</div>
+        <div className="filter-section">{filterList}</div>
     )
 }
 
