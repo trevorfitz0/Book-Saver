@@ -12,17 +12,22 @@ class App extends Component {
     this.state = {
       lists: [],
       currentBooks: [],
+      topBooks: [],
       loading: true
     }
     
   }
-
+ 
   componentDidMount() {
     getAllBooks()
       .then(data => {
         this.setState({ lists: data.results.lists, loading: false})
         console.log(data.results.lists)
+      this.getTopBooks()
       })
+  }
+  getTopBooks() {
+    this.setState({ topBooks: [this.state.lists[0].books[0], this.state.lists[1].books[0], this.state.lists[2].books[0], this.state.lists[3].books[0]]})
   }
   selectFilter = (name) => {
      const filterBooks = this.state.lists.find(list => {
@@ -38,7 +43,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Popular />
+        <Popular topBooks={this.state.topBooks}/>
         <Filter lists={this.state.lists} selectFilter={this.selectFilter}/>
         <AllBooks books={this.state.currentBooks}/>
       </div>
