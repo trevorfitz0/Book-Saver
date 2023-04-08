@@ -7,7 +7,7 @@ function Book({ title, author, rating, image}) {
         <img src={ image } alt={ title }></img>
         <p className='book-title'>{ title }</p>
         <p>{ author }</p>
-        <p>#{ rating}</p>
+        {rating && <p>#{ rating}</p>}
     </div>
   )
 }
