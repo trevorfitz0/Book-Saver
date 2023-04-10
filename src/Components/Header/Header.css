@@ -1,12 +1,27 @@
-.header {
+header {
     display: flex;
-    justify-content:space-between;
-    height: 10%;
+    height: 7.5vh;
     width: 100%;
     background-color: black;
     color:antiquewhite;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.login-section {
-    display: flex;
+header > h1,
+.login-button {
+    margin: 0px 25px;
+}
+
+.login-button {
+    border: 0;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.login-button:hover {
+    color: blue;
 }

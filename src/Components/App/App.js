@@ -7,6 +7,9 @@ import Popular from '../Popular/Popular'
 import Filter from '../Filter/Filter'
 import AllBooks from '../AllBooks/AllBooks'
 import getAllBooks from '../../APICalls'
+import Login from '../Login/Login';
+
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -44,9 +47,20 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Popular topBooks={this.state.topBooks}/>
-        <Filter lists={this.state.lists} selectFilter={this.selectFilter}/>
-        <AllBooks books={this.state.currentBooks}/>
+        <Route exact path='/' render={() => {
+          return (
+            <main>
+              <Popular topBooks={this.state.topBooks}/>
+              <Filter lists={this.state.lists} selectFilter={this.selectFilter}/>
+              <AllBooks books={this.state.currentBooks}/>
+            </main>
+          );
+        }} />
+        <Route exact path='/login' render={() => {
+          return (
+            <Login />
+          );
+        }} />
       </div>
     )
   }
