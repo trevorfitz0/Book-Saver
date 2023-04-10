@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { app, analytics, auth } from '../../firebase';
+import './App.css';
+
 import Header from '../Header/Header'
 import Popular from '../Popular/Popular'
 import Filter from '../Filter/Filter'
 import AllBooks from '../AllBooks/AllBooks'
-import './App.css';
 import getAllBooks from '../../APICalls'
 
 class App extends Component {
@@ -15,7 +17,6 @@ class App extends Component {
       topBooks: [],
       loading: true
     }
-    
   }
  
   componentDidMount() {
