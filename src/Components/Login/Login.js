@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from 'react-router-dom';
 import './Login.css';
 import { auth } from "../../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Login = ({ loginUser }) => {
+  const history = useHistory();
 
   const googleSignIn = (event) => {
     event.preventDefault()
@@ -15,8 +17,13 @@ const Login = ({ loginUser }) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       loginUser(result.user);
+      redirectHome();
     })
     .catch(err => console.log(err))
+  };
+
+  const redirectHome = () => {
+    history.push('/');
   };
 
   return (
