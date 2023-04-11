@@ -18,7 +18,8 @@ class App extends Component {
       lists: [],
       currentBooks: [],
       topBooks: [],
-      loading: true
+      loading: true,
+      user: {}
     }
   }
  
@@ -27,18 +28,24 @@ class App extends Component {
       .then(data => {
         this.setState({ lists: data.results.lists, loading: false})
         console.log(data.results.lists)
-      this.getTopBooks()
+        this.getTopBooks()
       })
   }
+
   getTopBooks() {
     this.setState({ topBooks: [this.state.lists[0].books[0], this.state.lists[1].books[0], this.state.lists[2].books[0], this.state.lists[3].books[0]]})
   }
+
   selectFilter = (name) => {
      const filterBooks = this.state.lists.find(list => {
      return list.list_name === name
      })
      this.setState({currentBooks: filterBooks.books})
-  } 
+  }
+
+  loginUser = userData => {
+    this.setState({ user: userData })
+  }
 
   render(){
     if (this.state.loading) {
@@ -46,7 +53,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Header />
+        <Header user={this.state.user}/>
         <Route exact path='/' render={() => {
           return (
             <main>
@@ -58,7 +65,7 @@ class App extends Component {
         }} />
         <Route exact path='/login' render={() => {
           return (
-            <Login />
+            <Login loginUser={this.loginUser}/>
           );
         }} />
       </div>

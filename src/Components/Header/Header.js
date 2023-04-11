@@ -3,13 +3,13 @@ import './Header.css'
 
 import { NavLink } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ user }) => {
     return (
         <header>
             <h1>Book-Saver</h1>
             <div className="login-section">
-                <NavLink to='/login' className='login-button'>Login</NavLink>
-                {/* <h2>User-Info</h2> */}
+                {user.uid ? <h2 className='users-name'>Hello, {user.displayName}!</h2> : 
+                <NavLink to='/login' className='login-button'>Login</NavLink>}
             </div>
         </header>
     )
