@@ -1,15 +1,17 @@
 import React from 'react';
 import './Header.css'
 
-const Header = () => {
+import { NavLink } from 'react-router-dom';
+
+const Header = ({ user }) => {
     return (
-        <div className="header">
+        <header>
             <h1>Book-Saver</h1>
             <div className="login-section">
-              <h2>Login</h2>
-            <h2>User-Info</h2>  
-            </div> 
-        </div>
+                {user.uid ? <h2 className='users-name'>Hello, {user.displayName}!</h2> : 
+                <NavLink to='/login' className='login-button'>Login</NavLink>}
+            </div>
+        </header>
     )
 }
 
