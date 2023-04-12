@@ -63,7 +63,7 @@ function Register() {
           <input type='text' id='pass' placeholder="Password" required onInput={(e) => setPassword(e.target.value)}></input>
         </div>
         <p className="error-code">{error}</p>
-        <button type='submit' className="register-submit" onClick={(event) => createAccount(event)}>Register</button>
+        <button type='submit' className="submit" onClick={(event) => createAccount(event)}>Register</button>
         <div className="line-break"></div>
       </form>
     </main>

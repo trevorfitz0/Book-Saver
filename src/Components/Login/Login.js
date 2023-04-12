@@ -59,7 +59,7 @@ const Login = ({ loginUser }) => {
           <input type='text' id='pass' placeholder="Password" require onInput={(e) => setPassword(e.target.value)}></input>
         </div>
         <p className="error-code">{error}</p>
-        <button type='submit' className="login-submit" onClick={(event) => emailPasswordLogin(event)}>Login</button>
+        <button type='submit' className="submit" onClick={(event) => emailPasswordLogin(event)}>Login</button>
         <div className="line-break"></div>
         <button className="google fa-brands fa-google" onClick={(event) => googleSignIn(event)}></button>
         <p>Don't have an account? Sign up <NavLink to='/register'>here</NavLink></p>
