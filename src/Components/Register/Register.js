@@ -28,17 +28,22 @@ function Register() {
           console.log(user.user)
           console.log(`User ${user} created`)
           updateProfile( user.user, {
-            displayName: `${firstName}, ${lastName}`
+            displayName: `${firstName} ${lastName}`
           })
+          history.push('/login');
         })
         .catch(err => {
           console.log(err.message)
-          if(err.message === 'Firebase: Error (auth/invalid-email).') {
+          if (err.message === 'Firebase: Error (auth/invalid-email).') {
             setError("Invalid Email")
+          } if(err.message === 'Firebase: Error (auth/missing-email).') {
+            setError("Please enter an Email")
+          } else if (err.message === 'Firebase: Error (auth/email-already-in-use).') {
+            setError("Email is already in use")
           } else if (err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
             setError("Password must be at least 6 characters")
-          } else if (err.message === 'FirebaseError: Firebase: Error (auth/email-already-in-use).') {
-            setError("Email is already in use")
+          } else if (err.message === 'Firebase: Error (auth/missing-password).') {
+            setError("Please enter a Password")
           }
         })
       }
