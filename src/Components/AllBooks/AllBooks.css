@@ -4,4 +4,29 @@
     grid-template-columns: repeat(5, 1fr); 
     flex-wrap: wrap;
     row-gap: 2rem;
+    justify-items: center;
+}
+
+@media screen and (max-width: 88rem) {
+    .books-section {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 68rem) {
+    .books-section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 57rem) {
+    .books-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 34rem) {
+    .books-section {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

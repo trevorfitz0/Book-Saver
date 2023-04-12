@@ -1,9 +1,9 @@
 header {
     display: flex;
-    height: 7.5vh;
+    height: 8vh;
     width: 100%;
     background-color: black;
-    color:antiquewhite;
+    color: white;
     align-items: center;
     justify-content: space-between;
 }
@@ -14,7 +14,8 @@ header > h1,
     margin: 0px 25px;
 }
 
-.login-button {
+.login-button,
+.logout-button {
     border: 0;
     background: transparent;
     color: white;
@@ -22,6 +23,25 @@ header > h1,
     text-decoration: none;
 }
 
-.login-button:hover {
+.logout-button {
+    font-size: initial;
+}
+
+.login-button:hover,
+.logout-button:hover {
     color: blue;
+}
+
+@media screen and (max-width: 38rem) {
+    header > h1,
+    .login-button {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 24rem) {
+    header > h1,
+    .login-button {
+        font-size: 1rem;
+    }
 }

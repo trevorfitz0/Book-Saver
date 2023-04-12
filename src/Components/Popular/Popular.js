@@ -7,7 +7,12 @@ const Popular = ({topBooks}) => {
       return <Book key={`pop${index}`} title={book.title} author={book.author} image={book.book_image}/>
     })
     return (
-        <div className="popular-section">{displayTopBooks}</div>
+        <section className="popular-section">
+          <h2>Popular Now</h2>
+          <div className='popular-books'>
+            {displayTopBooks}
+          </div>
+        </section>
     )
 }
 
