@@ -1,9 +1,17 @@
 import React from 'react';
 import './Header.css'
-
 import { NavLink } from 'react-router-dom';
+import { Auth, signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
 
-const Header = ({ user }) => {
+const Header = ({ logOutUser, user }) => {
+
+    const logout = async () => {
+        console.log('logging out')
+        await signOut(auth)
+        logOutUser()
+    }
+
     return (
         <header>
             <h1>Book Saver</h1>
@@ -11,7 +19,7 @@ const Header = ({ user }) => {
                 {user.uid ? 
                 <section className='user-logged-in'>
                     <h2 className='users-name'>Hello, {user.displayName}!</h2> 
-                    <button className='logout-button'>Log Out</button>
+                    <button className='logout-button' onClick={() => logout()}>Log Out</button>
                 </section>
                 : 
                 <NavLink to='/login' className='login-button'>Login</NavLink>}
