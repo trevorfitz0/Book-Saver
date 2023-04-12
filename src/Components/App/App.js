@@ -26,14 +26,25 @@ class App extends Component {
   componentDidMount() {
     getAllBooks()
       .then(data => {
-        this.setState({ lists: data.results.lists, loading: false})
+        this.setState({ lists: data.results.lists, loading: false, currentBooks: data.results.lists[0].books})
         console.log(data.results.lists)
         this.getTopBooks()
       })
   }
 
   getTopBooks() {
-    this.setState({ topBooks: [this.state.lists[0].books[0], this.state.lists[1].books[0], this.state.lists[2].books[0], this.state.lists[3].books[0]]})
+    if (this.state.loading) {
+      return;
+    };
+
+    const top = [];
+
+    for (let i = 0; top.length < 4; i++) {
+      if (!top.find(book => book.title === this.state.lists[i].books[0].title)) {
+        top.push(this.state.lists[i].books[0])
+      }
+    }
+    this.setState({ topBooks: top })
   }
 
   selectFilter = (name) => {
