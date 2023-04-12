@@ -13,6 +13,7 @@ const Login = ({ loginUser }) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const history = useHistory();
 
@@ -40,7 +41,10 @@ const Login = ({ loginUser }) => {
       loginUser(result.user);
       history.push('/');
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err)
+      setError('Invalid Username or Password')
+    })
   };
 
   return (
@@ -54,7 +58,8 @@ const Login = ({ loginUser }) => {
           <label htmlFor='pass'>Password</label>
           <input type='text' id='pass' placeholder="Password" require onInput={(e) => setPassword(e.target.value)}></input>
         </div>
-        <button type='submit' className="login-submit" onClick={(event) => emailPasswordLogin(event)}>Login</button>
+        <p className="error-code">{error}</p>
+        <button type='submit' className="submit" onClick={(event) => emailPasswordLogin(event)}>Login</button>
         <div className="line-break"></div>
         <button className="google fa-brands fa-google" onClick={(event) => googleSignIn(event)}></button>
         <p>Don't have an account? Sign up <NavLink to='/register'>here</NavLink></p>

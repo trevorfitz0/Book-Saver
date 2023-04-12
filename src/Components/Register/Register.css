@@ -40,14 +40,6 @@
     padding: 5px;
   }
   
-  .register-submit {
-    width: 40%;
-    height: 10%;
-    font-size: 1.5rem;
-    border: 0;
-    border-radius: 8px;
-  }
-  
   .google {
     height: 60px;
     width: 60px;

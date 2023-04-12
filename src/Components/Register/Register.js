@@ -13,19 +13,35 @@ function Register() {
     const [password, setPassword] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
+    const [error, setError] = useState('')
 
     const createAccount = (event) => {
         event.preventDefault()
 
-        createUserWithEmailAndPassword(auth, email, password)
-        .then(function(user) {
-        //   user.updateProfile ({
-        //     displayName: `${firstName} ${lastName}`
-        //   })
-          history.push('/login');
+        if (firstName === '') {
+          setError('Please enter a first name')
+          return
+        }
+
+        const { user } = createUserWithEmailAndPassword(auth, email, password)
+        .then((user) => {
+          console.log(user.user)
+          console.log(`User ${user} created`)
+          updateProfile( user.user, {
+            displayName: `${firstName}, ${lastName}`
+          })
         })
-        .catch(err => console.log(err))
-    };
+        .catch(err => {
+          console.log(err.message)
+          if(err.message === 'Firebase: Error (auth/invalid-email).') {
+            setError("Invalid Email")
+          } else if (err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+            setError("Password must be at least 6 characters")
+          } else if (err.message === 'FirebaseError: Firebase: Error (auth/email-already-in-use).') {
+            setError("Email is already in use")
+          }
+        })
+      }
 
   return (
     <main className="register-page">
@@ -46,7 +62,8 @@ function Register() {
           <label htmlFor='pass'>Password</label>
           <input type='text' id='pass' placeholder="Password" required onInput={(e) => setPassword(e.target.value)}></input>
         </div>
-        <button type='submit' className="register-submit" onClick={(event) => createAccount(event)}>Register</button>
+        <p className="error-code">{error}</p>
+        <button type='submit' className="submit" onClick={(event) => createAccount(event)}>Register</button>
         <div className="line-break"></div>
       </form>
     </main>
