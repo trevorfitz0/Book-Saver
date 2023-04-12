@@ -1,3 +1,9 @@
 .App {
   text-align: center;
 }
+
+.error-code {
+  color: red;
+  font-size: 2rem;
+  text-shadow: 0px 0px 2px black;
+}

@@ -18,6 +18,11 @@ function Register() {
     const createAccount = (event) => {
         event.preventDefault()
 
+        if (firstName === '') {
+          setError('Please enter a first name')
+          return
+        }
+
         const { user } = createUserWithEmailAndPassword(auth, email, password)
         .then((user) => {
           console.log(user.user)
@@ -29,8 +34,11 @@ function Register() {
         .catch(err => {
           console.log(err.message)
           if(err.message === 'Firebase: Error (auth/invalid-email).') {
-            console.log('invalid email')
-
+            setError("Invalid Email")
+          } else if (err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+            setError("Password must be at least 6 characters")
+          } else if (err.message === 'FirebaseError: Firebase: Error (auth/email-already-in-use).') {
+            setError("Email is already in use")
           }
         })
       }
@@ -54,6 +62,7 @@ function Register() {
           <label htmlFor='pass'>Password</label>
           <input type='text' id='pass' placeholder="Password" required onInput={(e) => setPassword(e.target.value)}></input>
         </div>
+        <p className="error-code">{error}</p>
         <button type='submit' className="register-submit" onClick={(event) => createAccount(event)}>Register</button>
         <div className="line-break"></div>
       </form>
