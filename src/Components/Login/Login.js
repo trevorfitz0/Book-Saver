@@ -2,9 +2,18 @@ import React from "react";
 import { useHistory } from 'react-router-dom';
 import './Login.css';
 import { auth } from "../../firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { 
+  signInWithPopup, 
+  GoogleAuthProvider ,
+  signInWithEmailAndPassword
+} from "firebase/auth";
+import { useState } from "react";
 
 const Login = ({ loginUser }) => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   const history = useHistory();
 
   const googleSignIn = (event) => {
@@ -22,6 +31,17 @@ const Login = ({ loginUser }) => {
     .catch(err => console.log(err))
   };
 
+  const emailPasswordLogin = () => {
+
+    signInWithEmailAndPassword(auth, email, password)
+    .then(result => {
+      console.log(result)
+      loginUser(result.user);
+      redirectHome();
+    })
+    .catch(err => console.log(err))
+  };
+
   const redirectHome = () => {
     history.push('/');
   };
@@ -30,14 +50,14 @@ const Login = ({ loginUser }) => {
     <main className="login-page">
       <form className="login-form">
         <div className="email-input">
-          <label for='email'>Email</label>
-          <input type='text' id='email' placeholder="Email"></input>
+          <label htmlFor='email'>Email</label>
+          <input type='text' id='email' placeholder="Email" onInput={(e) => setEmail(e.target.value)}></input>
         </div>
         <div className="pass-input">
-          <label for='pass'>Password</label>
-          <input type='text' id='pass' placeholder="Password"></input>
+          <label htmlFor='pass'>Password</label>
+          <input type='text' id='pass' placeholder="Password" onInput={(e) => setPassword(e.target.value)}></input>
         </div>
-        <button type='submit' className="login-submit">Login</button>
+        <button type='button' className="login-submit" onClick={() => emailPasswordLogin()}>Login</button>
         <div className="line-break"></div>
         <button className="google fa-brands fa-google" onClick={(event) => googleSignIn(event)}></button>
         <p>Don't have an account? Sign up <span>here</span></p>

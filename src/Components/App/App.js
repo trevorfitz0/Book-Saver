@@ -58,13 +58,17 @@ class App extends Component {
     this.setState({ user: userData })
   }
 
+  logOutUser = () => {
+    this.setState({ user: {} })
+  }
+
   render(){
     if (this.state.loading) {
       return
     }
     return (
       <div className="App">
-        <Header user={this.state.user}/>
+        <Header logOutUser={this.logOutUser} user={this.state.user}/>
         <Route exact path='/' render={() => {
           return (
             <main>
