@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { app, analytics, auth } from '../../firebase';
 import './App.css';
-import { useHistory } from 'react-router-dom';
 
 import Header from '../Header/Header'
 import Popular from '../Popular/Popular'
@@ -10,6 +9,7 @@ import AllBooks from '../AllBooks/AllBooks'
 import getAllBooks from '../../APICalls'
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import SingleBook from '../SingleBook/SingleBook';
 
 import { Route } from 'react-router-dom';
 
@@ -89,6 +89,11 @@ class App extends Component {
           return (
             <Register />
           )
+        }}/>
+        <Route exact path='/book/:id' render={({ match }) => {
+          const listWithBook = this.state.lists.find(list => list.books.find(book => book.primary_isbn13 === match.params.id))
+          const book = listWithBook.books.find(book => book.primary_isbn13 === match.params.id)
+          return <SingleBook book={book} />
         }}/>
       </div>
     )

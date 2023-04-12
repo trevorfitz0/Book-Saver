@@ -4,7 +4,7 @@ import Book from '../Book/Book'
 
 const Popular = ({topBooks}) => {
     const displayTopBooks = topBooks.map((book, index) => {
-      return <Book key={`pop${index}`} title={book.title} author={book.author} image={book.book_image}/>
+      return <Book key={`pop${index}`} title={book.title} author={book.author} image={book.book_image} id={book.primary_isbn13}/>
     })
     return (
         <section className="popular-section">
