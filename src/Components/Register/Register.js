@@ -13,19 +13,27 @@ function Register() {
     const [password, setPassword] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
+    const [error, setError] = useState('')
 
     const createAccount = (event) => {
         event.preventDefault()
 
-        createUserWithEmailAndPassword(auth, email, password)
-        .then(function(user) {
-        //   user.updateProfile ({
-        //     displayName: `${firstName} ${lastName}`
-        //   })
-          history.push('/login');
+        const { user } = createUserWithEmailAndPassword(auth, email, password)
+        .then((user) => {
+          console.log(user.user)
+          console.log(`User ${user} created`)
+          updateProfile( user.user, {
+            displayName: `${firstName}, ${lastName}`
+          })
         })
-        .catch(err => console.log(err))
-    };
+        .catch(err => {
+          console.log(err.message)
+          if(err.message === 'Firebase: Error (auth/invalid-email).') {
+            console.log('invalid email')
+
+          }
+        })
+      }
 
   return (
     <main className="register-page">
