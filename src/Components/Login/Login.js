@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import './Login.css';
 import { auth } from "../../firebase";
 import { 
@@ -26,24 +26,21 @@ const Login = ({ loginUser }) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       loginUser(result.user);
-      redirectHome();
+      history.push('/');
     })
     .catch(err => console.log(err))
   };
 
-  const emailPasswordLogin = () => {
+  const emailPasswordLogin = (event) => {
+    event.preventDefault()
 
     signInWithEmailAndPassword(auth, email, password)
     .then(result => {
       console.log(result)
       loginUser(result.user);
-      redirectHome();
+      history.push('/');
     })
     .catch(err => console.log(err))
-  };
-
-  const redirectHome = () => {
-    history.push('/');
   };
 
   return (
@@ -51,16 +48,16 @@ const Login = ({ loginUser }) => {
       <form className="login-form">
         <div className="email-input">
           <label htmlFor='email'>Email</label>
-          <input type='text' id='email' placeholder="Email" onInput={(e) => setEmail(e.target.value)}></input>
+          <input type='text' id='email' placeholder="Email" require onInput={(e) => setEmail(e.target.value)}></input>
         </div>
         <div className="pass-input">
           <label htmlFor='pass'>Password</label>
-          <input type='text' id='pass' placeholder="Password" onInput={(e) => setPassword(e.target.value)}></input>
+          <input type='text' id='pass' placeholder="Password" require onInput={(e) => setPassword(e.target.value)}></input>
         </div>
-        <button type='button' className="login-submit" onClick={() => emailPasswordLogin()}>Login</button>
+        <button type='submit' className="login-submit" onClick={(event) => emailPasswordLogin(event)}>Login</button>
         <div className="line-break"></div>
         <button className="google fa-brands fa-google" onClick={(event) => googleSignIn(event)}></button>
-        <p>Don't have an account? Sign up <span>here</span></p>
+        <p>Don't have an account? Sign up <NavLink to='/register'>here</NavLink></p>
       </form>
     </main>
   );

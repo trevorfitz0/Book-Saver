@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { app, analytics, auth } from '../../firebase';
 import './App.css';
+import { useHistory } from 'react-router-dom';
 
 import Header from '../Header/Header'
 import Popular from '../Popular/Popular'
@@ -8,6 +9,7 @@ import Filter from '../Filter/Filter'
 import AllBooks from '../AllBooks/AllBooks'
 import getAllBooks from '../../APICalls'
 import Login from '../Login/Login';
+import Register from '../Register/Register';
 
 import { Route } from 'react-router-dom';
 
@@ -83,6 +85,11 @@ class App extends Component {
             <Login loginUser={this.loginUser}/>
           );
         }} />
+        <Route exact path='/register' render={() => {
+          return (
+            <Register />
+          )
+        }}/>
       </div>
     )
   }
