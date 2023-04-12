@@ -8,6 +8,8 @@
     gap: 0.75rem;
     cursor: pointer;
     transition: scale 500ms;
+    text-decoration: none;
+    color: black;
 }
 
 .book-card > img {

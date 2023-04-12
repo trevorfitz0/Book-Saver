@@ -8,10 +8,16 @@ header {
     justify-content: space-between;
 }
 
-header > h1,
+.page-title,
 .users-name,
 .login-button {
     margin: 0px 25px;
+}
+
+.page-title {
+    color: inherit;
+    text-decoration: none;
+    font-size: 2rem;
 }
 
 .login-button,
