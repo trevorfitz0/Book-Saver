@@ -1,0 +1,79 @@
+.single-book-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 6rem;
+}
+
+.single-book-page > img {
+  object-fit: cover;
+  height: 60vh;
+  margin-left: 4rem;
+  box-shadow: -8px 8px 10px rgba(0, 0, 0, 0.75);
+}
+
+.sbook-info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-right: 3rem;
+  height: 70vh;
+  width: stretch;
+}
+
+.sbook-title {
+  margin-top: 1rem;
+  font-size: 3.5rem;
+}
+
+.sbook-author {
+  padding: 0 3%;
+  font-size: 2.5rem;
+}
+
+.sbook-info > .line-break {
+  margin: 2rem 0;
+}
+
+.sbook-ranking {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+}
+
+.sbook-ranking > h3 {
+  font-size: 1.75rem;
+}
+
+.sbook-desc {
+  height: 40%;
+  padding: 0 5%;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.sbook-buy-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  height: 10%;
+}
+
+.sbook-buy-buttons > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  background: black;
+  font-size: 3rem;
+  border: 0;
+  border-radius: 2rem;
+  height: 100%;
+  width: 25%;
+}
+
+.fa-apple::before {
+  margin-bottom: 3px;
+}
