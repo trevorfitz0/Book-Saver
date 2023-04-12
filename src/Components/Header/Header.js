@@ -14,7 +14,7 @@ const Header = ({ logOutUser, user }) => {
 
     return (
         <header>
-            <h1>Book Saver</h1>
+            <NavLink to='/' className='page-title'>Book Saver</NavLink>
             <div className="login-section">
                 {user.uid ? 
                 <section className='user-logged-in'>
