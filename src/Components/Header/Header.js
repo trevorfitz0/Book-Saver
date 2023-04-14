@@ -1,13 +1,12 @@
 import React from 'react';
-import './Header.css'
 import { NavLink } from 'react-router-dom';
-import { Auth, signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
+import './Header.css'
 
 const Header = ({ logOutUser, user }) => {
 
     const logout = async () => {
-        console.log('logging out')
         await signOut(auth)
         logOutUser()
     }

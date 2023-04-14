@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { app, analytics, auth } from '../../firebase';
+import { auth } from '../../firebase';
+import { Route } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
 import './App.css';
 
 import Header from '../Header/Header'
@@ -10,9 +12,6 @@ import getAllBooks from '../../APICalls'
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import SingleBook from '../SingleBook/SingleBook';
-
-import { Route } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
 
 class App extends Component {
   constructor() {
@@ -30,12 +29,10 @@ class App extends Component {
     getAllBooks()
       .then(data => {
         this.setState({ lists: data.results.lists, loading: false, currentBooks: data.results.lists[0].books})
-        console.log(data.results.lists)
         this.getTopBooks()
       })
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          console.log(user.reloadUserInfo)
           this.setState({ user: user })
         } 
       })
@@ -54,13 +51,12 @@ class App extends Component {
         top.push(this.state.lists[i].books[0])
       }
     }
+
     this.setState({ topBooks: top })
   }
 
-  selectFilter = (name) => {
-     const filterBooks = this.state.lists.find(list => {
-     return list.list_name === name
-     })
+  selectFilter = name => {
+     const filterBooks = this.state.lists.find(list => list.list_name === name)
      this.setState({currentBooks: filterBooks.books})
   }
 

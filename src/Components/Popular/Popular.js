@@ -1,6 +1,6 @@
 import React from 'react';
-import './Popular.css'
 import Book from '../Book/Book'
+import './Popular.css'
 
 const Popular = ({topBooks}) => {
     const displayTopBooks = topBooks.map((book, index) => {

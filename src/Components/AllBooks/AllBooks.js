@@ -1,6 +1,6 @@
 import React from 'react';
-import './AllBooks.css'
 import Book from '../Book/Book';
+import './AllBooks.css'
 
 const AllBooks = ({ books }) => {
 
