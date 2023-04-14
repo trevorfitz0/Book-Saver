@@ -5,7 +5,9 @@ import { auth } from "../../firebase";
 import { 
   signInWithPopup, 
   GoogleAuthProvider ,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence
 } from "firebase/auth";
 import { useState } from "react";
 
@@ -34,6 +36,8 @@ const Login = ({ loginUser }) => {
 
   const emailPasswordLogin = (event) => {
     event.preventDefault()
+
+    setPersistence(auth, browserSessionPersistence)
 
     signInWithEmailAndPassword(auth, email, password)
     .then(result => {

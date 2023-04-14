@@ -12,6 +12,7 @@ import Register from '../Register/Register';
 import SingleBook from '../SingleBook/SingleBook';
 
 import { Route } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
 
 class App extends Component {
   constructor() {
@@ -32,6 +33,13 @@ class App extends Component {
         console.log(data.results.lists)
         this.getTopBooks()
       })
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log(user.reloadUserInfo)
+          this.setState({ user: user })
+        } 
+      })
+      
   }
 
   getTopBooks() {
