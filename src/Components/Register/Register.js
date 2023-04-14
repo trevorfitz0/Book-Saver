@@ -1,52 +1,47 @@
-import React from 'react'
-import { useState } from 'react'
-import './Register.css'
+import React, { useState } from 'react'
 import { updateProfile, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { useHistory } from 'react-router-dom'
+import './Register.css'
 
-function Register() {
+const Register = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [error, setError] = useState('')
+  
+  const history = useHistory()
 
-    const history = useHistory()
+  const createAccount = (event) => {
+      event.preventDefault()
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [error, setError] = useState('')
-
-    const createAccount = (event) => {
-        event.preventDefault()
-
-        if (firstName === '') {
-          setError('Please enter a first name')
-          return
-        }
-
-        const { user } = createUserWithEmailAndPassword(auth, email, password)
-        .then((user) => {
-          console.log(user.user)
-          console.log(`User ${user} created`)
-          updateProfile( user.user, {
-            displayName: `${firstName} ${lastName}`
-          })
-          history.push('/login');
-        })
-        .catch(err => {
-          console.log(err.message)
-          if (err.message === 'Firebase: Error (auth/invalid-email).') {
-            setError("Invalid Email")
-          } if(err.message === 'Firebase: Error (auth/missing-email).') {
-            setError("Please enter an Email")
-          } else if (err.message === 'Firebase: Error (auth/email-already-in-use).') {
-            setError("Email is already in use")
-          } else if (err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
-            setError("Password must be at least 6 characters")
-          } else if (err.message === 'Firebase: Error (auth/missing-password).') {
-            setError("Please enter a Password")
-          }
-        })
+      if (firstName === '') {
+        setError('Please enter a first name')
+        return
       }
+
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((user) => {
+        updateProfile( user.user, {
+          displayName: `${firstName} ${lastName}`
+        })
+        history.push('/login');
+      })
+      .catch(err => {
+        if (err.message === 'Firebase: Error (auth/invalid-email).') {
+          setError("Invalid Email")
+        } if(err.message === 'Firebase: Error (auth/missing-email).') {
+          setError("Please enter an Email")
+        } else if (err.message === 'Firebase: Error (auth/email-already-in-use).') {
+          setError("Email is already in use")
+        } else if (err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+          setError("Password must be at least 6 characters")
+        } else if (err.message === 'Firebase: Error (auth/missing-password).') {
+          setError("Please enter a Password")
+        }
+      })
+    }
 
   return (
     <main className="register-page">

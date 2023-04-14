@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useHistory } from 'react-router-dom';
-import './Login.css';
 import { auth } from "../../firebase";
 import { 
   signInWithPopup, 
@@ -9,7 +8,7 @@ import {
   setPersistence,
   browserSessionPersistence
 } from "firebase/auth";
-import { useState } from "react";
+import './Login.css';
 
 const Login = ({ loginUser }) => {
 
@@ -19,34 +18,29 @@ const Login = ({ loginUser }) => {
 
   const history = useHistory();
 
-  const googleSignIn = (event) => {
+  const googleSignIn = event => {
     event.preventDefault()
     const provider = new GoogleAuthProvider();
     
     signInWithPopup(auth, provider)
     .then(result => {
-      console.log(result)
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
       loginUser(result.user);
       history.push('/');
     })
-    .catch(err => console.log(err))
+    .catch(err => setError(err))
   };
 
-  const emailPasswordLogin = (event) => {
+  const emailPasswordLogin = event => {
     event.preventDefault()
 
     setPersistence(auth, browserSessionPersistence)
 
     signInWithEmailAndPassword(auth, email, password)
     .then(result => {
-      console.log(result)
       loginUser(result.user);
       history.push('/');
     })
-    .catch(err => {
-      console.log(err)
+    .catch(() => {
       setError('Invalid Username or Password')
     })
   };
@@ -56,11 +50,11 @@ const Login = ({ loginUser }) => {
       <form className="login-form">
         <div className="email-input">
           <label htmlFor='email'>Email</label>
-          <input type='text' id='email' placeholder="Email" require onInput={(e) => setEmail(e.target.value)}></input>
+          <input type='text' id='email' placeholder="Email" required onInput={(event) => setEmail(event.target.value)}></input>
         </div>
         <div className="pass-input">
           <label htmlFor='pass'>Password</label>
-          <input type='text' id='pass' placeholder="Password" require onInput={(e) => setPassword(e.target.value)}></input>
+          <input type='text' id='pass' placeholder="Password" required onInput={(event) => setPassword(event.target.value)}></input>
         </div>
         <p className="error-code">{error}</p>
         <button type='submit' className="submit" onClick={(event) => emailPasswordLogin(event)}>Login</button>
