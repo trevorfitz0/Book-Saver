@@ -9,5 +9,17 @@ describe('Main Page', () => {
        cy.get('.submit').click()
        cy.get('.users-name').should('contain', 'Hello, test testing!')
     })
+    it('Should throw an error when we put in the wrong email', () => {
+        cy.get('#email').type('test')
+        cy.get('#pass').type('password')
+        cy.get('.submit').click()
+        cy.get('.error-code').should('contain', 'Invalid Username or Password')
+     })
+     it('Should throw an error when we put in the wrong password', () => {
+        cy.get('#email').type('test@test.com')
+        cy.get('#pass').type('pass')
+        cy.get('.submit').click()
+        cy.get('.error-code').should('contain', 'Invalid Username or Password')
+     })
    
 })
