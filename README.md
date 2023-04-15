@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+<h1 align=center>Book Saver</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Abstract
+Book Saver is an application that pulls the data from the NYT Best Sellers Lists, and allows the user to view them. There's a homepage that starts with a popular section that displays 4 of the current #1 books, and then a bunch of filters the user can click through to view the current books on all the non-deprecated NYT Bestsellers Lists. When a user clicks on a book, they'll be brought to a new page displaying more info about the book, and give a couple of buttons for the user to have quick access to sites they can purchase the book from. There's also a login page and an account registration page that allows a user to connect their google account or create a new account on the app, all authenticated through Google Firebase.
 
-## Available Scripts
+## Project Viewing
+Unfortunately, since the app uses Secret API Keys through Google Firebase, it's unable to be pulled down and run locally. However, it's fully usable [here](https://trevorfitz0.github.io/Book-Saver)
 
-In the project directory, you can run:
+<details>
+<summary> <h2>Preview</h2> </summary>
+<br>
 
-### `npm start`
+Home Page
+![image](https://user-images.githubusercontent.com/114776048/232245661-b2f54cb3-ddde-4106-a616-6c16a3bc9d0c.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Home Page under a filter
+![image](https://user-images.githubusercontent.com/114776048/232245982-c165b58e-54c8-4202-9c6c-0f8c28ea0628.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Single Book View
+![image](https://user-images.githubusercontent.com/114776048/232245683-88e73e1d-2ee1-4d54-b1f5-4b50849024d4.png)
 
-### `npm test`
+Login Page
+![image](https://user-images.githubusercontent.com/114776048/232245892-be5d6cb4-d02d-44dc-97a6-ec9164a69b18.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Register Page
+![image](https://user-images.githubusercontent.com/114776048/232245915-6f53dd82-a2b8-4fe3-a503-bc7a48cec16f.png)
 
-### `npm run build`
+</details>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Context
+This application is our Mod 3 Stretch Tech group project, and we worked on it for ~20 hours.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributors
+[Trevor Fitzgerald](https://www.github.com/trevorfitz0)<br>
+[Tom Doder](https://www.github.com/lordschwifty)<br>
+[Daniel Curtin](https://www.github.com/danielcurtin)<br>
 
-### `npm run eject`
+## Learning Goals
+- Pick up a new technology outside the scope of the Turing Program and implement it into a project.
+- Solidify our understanding of React fundamentals.
+- Create a multi-page UX utilizing React Router.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Wins + Challenges
+- A win came in the form of Firebase implementation - the docs were easy to understand and the installation process was much simpler than expected.
+- A challenge came in the form of Testing - Cypress performs inconsistently at best - tests will fail, then pass upon refresh. It was a challenge to know when our test was actually correct vs. when they were written wrong.
