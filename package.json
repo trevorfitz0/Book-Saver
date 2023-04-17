@@ -1,7 +1,7 @@
 {
   "name": "book-saver",
   "version": "0.1.0",
-  "homepage": "https://{trevorfitz0}.github.io/{Book-saver}",
+  "homepage": "https://trevorfitz0.github.io/Book-saver",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
