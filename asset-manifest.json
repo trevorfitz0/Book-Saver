@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Book-Saver/static/css/main.289d81bc.css",
-    "main.js": "/Book-Saver/static/js/main.c0b4503a.js",
+    "main.js": "/Book-Saver/static/js/main.7bdc2869.js",
     "index.html": "/Book-Saver/index.html",
     "main.289d81bc.css.map": "/Book-Saver/static/css/main.289d81bc.css.map",
-    "main.c0b4503a.js.map": "/Book-Saver/static/js/main.c0b4503a.js.map"
+    "main.7bdc2869.js.map": "/Book-Saver/static/js/main.7bdc2869.js.map"
   },
   "entrypoints": [
     "static/css/main.289d81bc.css",
-    "static/js/main.c0b4503a.js"
+    "static/js/main.7bdc2869.js"
   ]
 }
