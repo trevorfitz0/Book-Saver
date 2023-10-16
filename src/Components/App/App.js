@@ -52,6 +52,11 @@ class App extends Component {
       }
     }
 
+    if (!top.length) {
+      this.getTopBooks();
+      return;
+    } 
+
     this.setState({ topBooks: top })
   }
 
